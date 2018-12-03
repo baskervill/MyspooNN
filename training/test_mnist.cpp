@@ -13,11 +13,24 @@ using namespace std;
 #define Abit 5
 #define OutP 8
 #define InP 8
-int dot(int x, int y){
-    return x * y;
+int dot(long in, int weight){
+    int acc = 0;
+    for(int p = 0;p < OutP;p++)
+    {
+        int res = 0;
+        bool tmp = weight & (1<<p);
+        int tmp1 = (in & ((0xFF)<<(p*8)))>>(p*8);
+        if(tmp)
+        {
+            res = tmp1;
+        }
+        else res = -tmp1;
+        acc += res;
+    }    
+    return acc;
 }
 
-void conv2d(const string* w, const string* a, const string* b, const int* a1, int MatrixH, int MatrixW)
+void conv2d(const string* w, const string* a, const string* b, const long* a1, int MatrixH, int MatrixW)
 {
     const int NumVecs = DIN * DIN;
     const int InputFold = MatrixH / InP;
@@ -32,14 +45,15 @@ void conv2d(const string* w, const string* a, const string* b, const int* a1, in
     for(int rep = 0;rep < totalReps;rep++)
     { 
         index = wVec * OutputFold + wMat;
-        int tempVec = a[0][0];
+        int tempVec = a1[0];
         for(int p = 0;p < OutP;p++)
         {
             //calculate
             string tempMat = w[p*36 + index];
             int tmpVal;
             sscanf(tempMat.c_str(), "%x", &tmpVal);
-            int res = dot(tempVec, tmpVal);
+            int tmp1 = tmpVal & 0x00FF;
+            int res = dot(tempVec, tmp1);
             
         }
 
@@ -67,17 +81,17 @@ void conv2d(const string* w, const string* a, const string* b, const int* a1, in
 
 int main()
 { 
-    int a[28][28];
+    long a[28][28];
     for(int i = 0;i < 28;i++)
         for(int j = 0;j < 28;j++)
-            a[i][j] = 1;
+            a[i][j] = 511;
     //cout<<a[0][0];
     
     
     const int MatrixH = CIN * K * K;
     const int MatrixW = COUT;
     const int NumVecs = DIN * DIN;
-    conv2d(&weights0[0][0], &factorA0[0][0], &factorB0[0][0], &a[0][0], MatrixH, MatrixW);
+    conv2d(&weights1[0][0], &factorA1[0][0], &factorB1[0][0], &a[0][0], MatrixH, MatrixW);
     
     return 0;
 }

@@ -38,7 +38,7 @@ MONITOR = 1
 IMAGE_SIZE = 28
 
 BITW = 1
-BITA = 5
+BITA = 8
 BITG = 32
 
 class Model(ModelDesc):
@@ -261,8 +261,8 @@ def dump_weights(meta, model, output):
 
 
 if __name__ == '__main__':
-    dump_weights("./train_log/mnist-cnn0910-142245/graph-0910-142247.meta", "./train_log/mnist-cnn0910-142245/model-1404.data-00000-of-00001", "weights-1W5A.npy")
-    '''
+    #dump_weights("./train_log/mnist-cnn0910-142245/graph-0910-142247.meta", "./train_log/mnist-cnn0910-142245/model-1404.data-00000-of-00001", "weights-1W5A.npy")
+    
     parser = argparse.ArgumentParser()
     parser.add_argument('dump2_train1_test0', help='dump(2), train(1) or test(0)')
     parser.add_argument('--gpu', help='comma separated list of GPU(s) to use.')
@@ -283,7 +283,9 @@ if __name__ == '__main__':
         config = get_config()
         if args.model:
             config.session_init = SaverRestore(args.model)
-        SimpleTrainer(config).train()
+        #XSimpleTrainer(config).train()
+        #launch_train_with_config(config, SimpleTrainer)
+        launch_train_with_config(config, SimpleTrainer())
 
     elif args.dump2_train1_test0 == '0':
         if args.weights == None:
@@ -299,4 +301,4 @@ if __name__ == '__main__':
             print('Provide model file (.data-00000-of-00001) for dumping')
             sys.exit()
         dump_weights(args.meta, args.model, args.output)
-    '''
+    

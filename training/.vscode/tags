@@ -1,0 +1,84 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BITA	../mnist-cnn.py	/^BITA = 8$/;"	kind:variable	line:41
+BITG	../mnist-cnn.py	/^BITG = 32$/;"	kind:variable	line:42
+BITW	../mnist-cnn.py	/^BITW = 1$/;"	kind:variable	line:40
+FACTOR_SCALE_BITS	../evaluate.py	/^FACTOR_SCALE_BITS = 22$/;"	kind:variable	line:48
+FIXED_BITS	../evaluate.py	/^FIXED_BITS = 20$/;"	kind:variable	line:42
+HIGH_PREC_SCALE_BITS	../evaluate.py	/^HIGH_PREC_SCALE_BITS = SCALE_BITS+4$/;"	kind:variable	line:46
+IMAGE_SIZE	../mnist-cnn.py	/^IMAGE_SIZE = 28$/;"	kind:variable	line:38
+MAC_BITS	../evaluate.py	/^MAC_BITS = 32$/;"	kind:variable	line:40
+MAX_INP	../evaluate.py	/^MAX_INP = 8$/;"	kind:variable	line:36
+MAX_OUTP	../evaluate.py	/^MAX_OUTP = 8$/;"	kind:variable	line:38
+MONITOR	../mnist-cnn.py	/^        MONITOR = 0$/;"	kind:variable	line:281
+MONITOR	../mnist-cnn.py	/^MONITOR = 1$/;"	kind:variable	line:36
+Model	../mnist-cnn.py	/^class Model(ModelDesc):$/;"	kind:class	line:44
+SCALE_BITS	../evaluate.py	/^SCALE_BITS = 18$/;"	kind:variable	line:44
+THRESHOLD_TO_FACTOR_TRANSITION	../evaluate.py	/^THRESHOLD_TO_FACTOR_TRANSITION = 4$/;"	kind:variable	line:34
+VERBOSITY	../evaluate.py	/^VERBOSITY = 1$/;"	kind:variable	line:31
+__init__	../loader.py	/^	def __init__(self):$/;"	kind:member	line:21
+_build_graph	../mnist-cnn.py	/^    def _build_graph(self, inputs):$/;"	kind:member	line:49
+_get_inputs	../mnist-cnn.py	/^    def _get_inputs(self):$/;"	kind:member	line:45
+_get_optimizer	../mnist-cnn.py	/^    def _get_optimizer(self):$/;"	kind:member	line:122
+activate	../mnist-cnn.py	/^        def activate(x):$/;"	kind:function	line:79
+activation_bits	../evaluate.py	/^	activation_bits = args.a$/;"	kind:variable	line:936
+annotation	../convertXML.py	/^                annotation = Element('annotation')$/;"	kind:variable	line:38
+args	../evaluate.py	/^	args = parser.parse_args()$/;"	kind:variable	line:933
+args	../mnist-cnn.py	/^    args = parser.parse_args()$/;"	kind:variable	line:274
+bndbox	../convertXML.py	/^                bndbox = SubElement(object_fild, 'bndbox')$/;"	kind:variable	line:42
+computeFactors	../evaluate.py	/^def computeFactors(MatrixW, OutP, Wmax, bn_beta, bn_gamma, bn_mean, bn_variance, Mbit):$/;"	kind:function	line:258
+computeThresholds	../evaluate.py	/^def computeThresholds(MatrixW, OutP, Wmax, bn_beta, bn_gamma, bn_mean, bn_variance, Mbit, Abit):$/;"	kind:function	line:180
+computeWeights	../evaluate.py	/^def computeWeights(W, Wbit, InP, OutP):$/;"	kind:function	line:110
+config	../mnist-cnn.py	/^        config = get_config()$/;"	kind:variable	line:283
+convertXML.py	../convertXML.py	1;"	kind:file	line:1
+dorefa.py	../dorefa.py	1;"	kind:file	line:1
+dump_weights	../mnist-cnn.py	/^def dump_weights(meta, model, output):$/;"	kind:function	line:215
+evaluate.py	../evaluate.py	1;"	kind:file	line:1
+fa	../dorefa.py	/^    def fa(x):$/;"	kind:function	line:29
+fg	../dorefa.py	/^    def fg(x):$/;"	kind:function	line:47
+formatFactors	../evaluate.py	/^def formatFactors(name, basemem, Mbit, OutP, MatrixW, factors):$/;"	kind:function	line:74
+formatThresholds	../evaluate.py	/^def formatThresholds(basemem, Mbit, NumThresholds, OutP, MatrixW, thresholds):$/;"	kind:function	line:62
+formatWeights	../evaluate.py	/^def formatWeights(basemem, Wbit, InP, OutP, MatrixW, MatrixH, weights):$/;"	kind:function	line:50
+fw	../dorefa.py	/^    def fw(x):$/;"	kind:function	line:17
+generateConfig	../evaluate.py	/^def generateConfig(layers_list, path_to_config):$/;"	kind:function	line:459
+generateLayers	../evaluate.py	/^def generateLayers(session, activation_bits, weight_bits, non_quantized_layers, frequency, FMpS_target):$/;"	kind:function	line:557
+genereateHLSparams	../evaluate.py	/^def genereateHLSparams(layers_list, network_model, path_to_params, fw):$/;"	kind:function	line:334
+get_config	../mnist-cnn.py	/^def get_config():$/;"	kind:function	line:132
+get_data	../mnist-cnn.py	/^def get_data():$/;"	kind:function	line:127
+get_dorefa	../dorefa.py	/^def get_dorefa(bitW, bitA, bitG):$/;"	kind:function	line:9
+grad_fg	../dorefa.py	/^    def grad_fg(op, x):$/;"	kind:function	line:35
+hexFromInt	../evaluate.py	/^def hexFromInt(value, precision):$/;"	kind:function	line:93
+img_dir	../convertXML.py	/^    img_dir = '\/home\/haoyunchao\/WORK\/PYNQ\/ship\/JPEGImages'$/;"	kind:variable	line:30
+init	../evaluate.py	/^		init = get_model_loader(args.model)$/;"	kind:variable	line:942
+intFromBitstring	../evaluate.py	/^def intFromBitstring(bitstring, precision):$/;"	kind:function	line:86
+jsonfile	../evaluate.py	/^			jsonfile = open(args.meta + '.net', 'w')$/;"	kind:variable	line:948
+label	../convertXML.py	/^            label = openfile(os.path.join(label_dir, f))$/;"	kind:variable	line:35
+label_dir	../convertXML.py	/^    label_dir = '\/home\/haoyunchao\/WORK\/PYNQ\/ship\/labels'$/;"	kind:variable	line:31
+load_libsvm_data	../loader.py	/^	def load_libsvm_data(self, path_to_file, num_samples, num_features, one_hot, classes):$/;"	kind:member	line:28
+loader	../loader.py	/^class loader:$/;"	kind:class	line:20
+loader.py	../loader.py	1;"	kind:file	line:1
+mnist-cnn.py	../mnist-cnn.py	1;"	kind:file	line:1
+monitor	../mnist-cnn.py	/^        def monitor(x, name):$/;"	kind:function	line:62
+name	../convertXML.py	/^                name = SubElement(object_fild, 'name')$/;"	kind:variable	line:40
+new_get_variable	../mnist-cnn.py	/^        def new_get_variable(v):$/;"	kind:function	line:68
+object_fild	../convertXML.py	/^                object_fild = SubElement(annotation, 'object')$/;"	kind:variable	line:39
+openfile	../convertXML.py	/^def openfile(filename):$/;"	kind:function	line:15
+parser	../evaluate.py	/^	parser = argparse.ArgumentParser()$/;"	kind:variable	line:928
+parser	../mnist-cnn.py	/^    parser = argparse.ArgumentParser()$/;"	kind:variable	line:266
+prettify	../convertXML.py	/^def prettify(elem):$/;"	kind:function	line:7
+quantize	../dorefa.py	/^    def quantize(x, k):$/;"	kind:function	line:12
+run_test	../mnist-cnn.py	/^def run_test(weights_file, test_file):$/;"	kind:function	line:151
+sess	../evaluate.py	/^		sess = tf.Session(config=tf.ConfigProto(allow_soft_placement=True))$/;"	kind:variable	line:943
+target_name	../convertXML.py	/^                target_name = f.replace('txt', 'xml')$/;"	kind:variable	line:37
+weight_bits	../evaluate.py	/^	weight_bits = args.w$/;"	kind:variable	line:935
+writeDefine	../evaluate.py	/^def writeDefine(defineName, defineValue, configFile):$/;"	kind:function	line:456
+xmax	../convertXML.py	/^                xmax = SubElement(bndbox, 'xmax')$/;"	kind:variable	line:47
+xmin	../convertXML.py	/^                xmin = SubElement(bndbox, 'xmin')$/;"	kind:variable	line:43
+xml_dir	../convertXML.py	/^    xml_dir = '\/home\/haoyunchao\/WORK\/PYNQ\/ship\/xml'$/;"	kind:variable	line:32
+xml_string	../convertXML.py	/^                xml_string = prettify(annotation)$/;"	kind:variable	line:51
+ymax	../convertXML.py	/^                ymax = SubElement(bndbox, 'ymax')$/;"	kind:variable	line:49
+ymin	../convertXML.py	/^                ymin = SubElement(bndbox, 'ymin')$/;"	kind:variable	line:45
