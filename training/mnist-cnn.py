@@ -157,6 +157,7 @@ def run_test(weights_file, test_file):
     output_names.extend(monitor_names)
 
     param_dict = np.load(weights_file, encoding='latin1').item()
+    #param_dict = np.load(weights_file, encoding='latin1')
     predictor = OfflinePredictor(PredictConfig(
         model=Model(),
         session_init=DictRestore(param_dict),
