@@ -6,6 +6,7 @@
         "utility": "cpp",
         "valarray": "cpp",
         "ratio": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "iosfwd": "cpp"
     }
 }

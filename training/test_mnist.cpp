@@ -13,7 +13,9 @@ using namespace std;
 #define Abit 8
 #define OutP 8
 #define InP 8
-int dot(long in, int weight){
+#define FACTOR_SCALE_BITS 22
+#define ScaleBits 18
+int dot(long in, char weight){
     int acc = 0;
     for(int p = 0;p < OutP;p++)
     {
@@ -29,8 +31,28 @@ int dot(long in, int weight){
     }    
     return acc;
 }
+char active(string s1, string s2, int res)
+{
+    int tmpVal1, tmpVal2;
+    sscanf(s1.c_str(), "%x", &tmpVal1);
+    sscanf(s2.c_str(), "%x", &tmpVal2);
+    char result;
+    long temp_result = tmpVal1 * res;
+    temp_result += tmpVal2;
+    char limit = 1<<Abit - 1;
+    bool remains = temp_result & (1<<(FACTOR_SCALE_BITS-1));
+    temp_result = temp_result >> FACTOR_SCALE_BITS;
+    if(Wbit > 1) temp_result = temp_result >> ScaleBits;
+    if(temp_result < 0)
+        result = 0;
+    else if(temp_result >= limit)
+        result = limit;
+    else 
+        result = temp_result & 0xFF+ remains;
 
-void conv2d(const string* w, const string* a, const string* b, const long* a1, int MatrixH, int MatrixW)
+    return result;
+}
+void conv2d(const string* w, const string* a, const string* b, vector<long>& a1, int MatrixH, int MatrixW, vector<long>& out)
 {
     const int NumVecs = DIN * DIN;
     const int InputFold = MatrixH / InP;
@@ -40,26 +62,44 @@ void conv2d(const string* w, const string* a, const string* b, const long* a1, i
     int wMat = 0;
 
     int index = 0;
-
-
+    int resultVec[OutP];
+    long OutBuf = 0;
+    long rowstore[InputFold];
+    int a_index = 0;
+    long tempVec;
     for(int rep = 0;rep < totalReps;rep++)
     { 
         index = wVec * OutputFold + wMat;
-        int tempVec = a1[0];
+        //long tempVec = a1[0];
+        
+        if(wMat == 0)
+        {
+            tempVec = a1[a_index++];
+            rowstore[wVec] = tempVec;
+        }
+        else{
+            tempVec = rowstore[wVec];
+        }
         for(int p = 0;p < OutP;p++)
         {
             //calculate
-            string tempMat = w[p*36 + index];
+            int col = ((CIN*K*K)/InP)*(COUT/OutP);
+            string tempMat = w[p*col + index];
             int tmpVal;
             sscanf(tempMat.c_str(), "%x", &tmpVal);
-            int tmp1 = tmpVal & 0x00FF;
+            char tmp1 = tmpVal & 0x00FF;
             int res = dot(tempVec, tmp1);
-            
+            if(wVec == 0)
+                resultVec[p] = res;
+            else
+                resultVec[p] += res;
+            char tmp_out = active(a[p * OutP + wMat], b[p * OutP + wMat], resultVec[p]);
+            OutBuf = OutBuf << Abit | tmp_out;
         }
 
         if(wVec == InputFold - 1)
         {
-            //output
+            out.push_back(OutBuf);
             cout<<"done"<<endl;
             //break;
         }
@@ -178,13 +218,12 @@ void SWU_NoP(vector<vector<int>> &in, vector<vector<int>>& out)
 }
 int main()
 { 
-    long a[14][14];
-    for(int i = 0;i < 14;i++)
-        for(int j = 0;j < 14;j++)
-            a[i][j] = 1;
+    //long a[14][14];
+    vector<long> a(14*14, 1);
     //cout<<a[0][0];
     vector<vector<int>> in(256, vector<int>(256, 1));
     vector<vector<int>> out;
+    vector<long> out2;
     SWU_NoP(in, out);
     vector<vector<int>> out1;
     reduce_with(out, out1);
@@ -192,7 +231,7 @@ int main()
     const int MatrixH = CIN * K * K;
     const int MatrixW = COUT;
     const int NumVecs = DIN * DIN;
-    conv2d(&weights1[0][0], &factorA1[0][0], &factorB1[0][0], &a[0][0], MatrixH, MatrixW);
+    conv2d(&weights1[0][0], &factorA1[0][0], &factorB1[0][0], a, MatrixH, MatrixW, out2);
     
     return 0;
 }
